@@ -1,6 +1,6 @@
-# TensorApp
+# TensorFlow.js Digit Recognition
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
+This project shows TensorFlow.js model to recognize handwritten digits with a convolutional neural network imported from python TensorFlow Keras.
 
 ## Development server
 
