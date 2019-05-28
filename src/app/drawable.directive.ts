@@ -65,7 +65,6 @@ export class DrawableDirective implements OnInit {
 
   @HostListener('touchmove', ['$event'])
   onMoveTouch(e) {
-    console.log(e.touches[0])
     e.preventDefault()
 
     this.ctx.beginPath(); // begin

@@ -19,9 +19,6 @@ export class AppComponent implements OnInit {
     this.loadModel();
   }
 
-
-
-
   //// LOAD PRETRAINED KERAS MODEL ////
 
   async loadModel() {

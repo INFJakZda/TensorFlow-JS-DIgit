@@ -1,12 +1,17 @@
 .wrapper {
     display: inline-flex;
     justify-content: flex-end;
-    border: 10px solid lighten(#1abc9c, 15%);
+    border: 5px solid lighten(#1abc9c, 15%);
     transition: border-color .2s ease-in;
     &:hover {
-        border: 10px solid #1abc9c;
+        border: 5px solid #1abc9c;
         transition: border-color .2s ease-in;
     }
+}
+
+.container, .col-sm {
+    padding: 0px !important;
+    margin: 0px !important;
 }
 
 canvas {
@@ -14,7 +19,7 @@ canvas {
 }
 
 .row {
-    margin: 10vh 5vw;
+    margin: 2vh 5vw;
 }
 
 header {
