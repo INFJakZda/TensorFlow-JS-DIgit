@@ -11,7 +11,6 @@
 
 .container, .col-sm {
     padding: 0px !important;
-    margin: 0px !important;
 }
 
 canvas {
@@ -33,7 +32,7 @@ header {
 main {
     background: linear-gradient(to bottom, #ffffff 0%, #dddee1 100%);
     border-bottom: 1px solid rgba(0, 0, 0, .2);
-    padding: 10vh 0 20vh;
+    padding: 10vh 0 32vh;
     position: relative;
     text-align: center;
     overflow: hidden;
