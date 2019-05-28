@@ -25,10 +25,6 @@ export class DrawableDirective implements OnInit {
     this.ctx = this.canvas.getContext('2d');
   }
 
-  @HostListener('mouseup', ['$event'])
-  onUp(e) {
-    this.newImage.emit(this.getImgData());
-  }
 
   @HostListener('mouseenter', ['$event'])
   onEnter(e) {
@@ -38,6 +34,13 @@ export class DrawableDirective implements OnInit {
   @HostListener('mousedown', ['$event'])
   onMove(e) {
     this.setPosition(e);
+  }
+
+  @HostListener('touchstart', ['$event'])
+  onStart(e) {
+    this.pos.x = this.computeMousePosX(e)
+    this.pos.y = this.computeMousePosY(e)
+    e.preventDefault()
   }
 
   @HostListener('mousemove', ['$event'])
@@ -60,6 +63,25 @@ export class DrawableDirective implements OnInit {
     this.ctx.stroke();
   }
 
+  @HostListener('touchmove', ['$event'])
+  onMoveTouch(e) {
+    console.log(e.touches[0])
+    e.preventDefault()
+
+    this.ctx.beginPath(); // begin
+
+    this.ctx.lineWidth = 10;
+    this.ctx.lineCap = 'round';
+    this.ctx.strokeStyle = '#111111';
+
+    this.ctx.moveTo(this.pos.x, this.pos.y);
+    this.pos.x = this.computeMousePosX(e)
+    this.pos.y = this.computeMousePosY(e)
+    this.ctx.lineTo(this.pos.x, this.pos.y);
+
+    this.ctx.stroke();
+  }
+
   @HostListener('resize', ['$event'])
   onResize(e) {
     this.ctx.canvas.width = window.innerWidth;
@@ -75,8 +97,26 @@ export class DrawableDirective implements OnInit {
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
   }
 
+  predictImage() {
+    this.newImage.emit(this.getImgData());
+  }
+
   getImgData(): ImageData {
     const scaled = this.ctx.drawImage(this.canvas, 0, 0, 28, 28);
     return this.ctx.getImageData(0, 0, 28, 28);
+  }
+
+  computeMousePosX(e) {
+    const rect = e.touches[0].target.getBoundingClientRect();
+    const scaleX = this.canvas.width / rect.width;
+
+    return (e.touches[0].clientX - rect.left) * scaleX;
+  }
+
+  computeMousePosY(e) {
+    const rect = e.touches[0].target.getBoundingClientRect();
+    const scaleY = this.canvas.height / rect.height;
+
+    return (e.touches[0].clientY - rect.top) * scaleY;
   }
 }

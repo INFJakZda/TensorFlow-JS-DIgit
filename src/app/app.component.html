@@ -1,41 +1,33 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-sm">
-      <h3>Draw Here</h3>
-        <div class="wrapper">
-            <canvas drawable (newImage)="predict($event)"></canvas><br>
-        </div>
+<header>
+  <h1>Rozpoznawanie cyfry</h1>
+</header>
 
-        <button class="btn btn-sm btn-warning" (click)="canvas.clear()">Erase</button>
-
-    </div>
-    <div class="col-sm">
-        <h3>TensorFlow Prediction</h3>
-        <chart [data]="predictions"></chart>
-    </div>
-  </div>
-</div>
-
-<hr>
-
-<div class="container">
+<main>
+  <div class="container">
     <div class="row justify-content-center">
       <div class="col-sm">
-        <h1>Linear Model</h1>
-        
-          <h4>Predicted Value: <span class="badge badge-info">{{ prediction }}</span></h4>
-
-          <p>Basic TensorFlow linear regression model that was trained in the browser.</p>
-        
-          <hr>
-        
-          <input type="number" (change)="linearPrediction($event.target.value)" class="form-control" placeholder="enter any random numbner">
+        <h3>Narysuj Cyferkę</h3>
+          <div class="wrapper">
+              <canvas drawable (newImage)="predict($event)"></canvas><br>
+          </div>
+          <div>
+            <button class="btn btn-sm btn-warning" (click)="canvas.clear()">Wyczyść</button>
+            <button class="btn btn-sm btn-warning" (click)="canvas.predictImage()">Graj!</button>
+          </div>
+  
+          
+  
+      </div>
+      <div class="col-sm">
+          <h3>Predykcja to:</h3>
+          <chart [data]="predictions"></chart>
       </div>
     </div>
   </div>
-  
+</main>
 
-
-
-
+<footer>
+  <p>Jakub Zdanowski 2019</p>
+  <small>🕷<a target="_blank" href="https://github.com/INFJakZda">GitHub</a>.</small>
+</footer>
 <router-outlet></router-outlet>

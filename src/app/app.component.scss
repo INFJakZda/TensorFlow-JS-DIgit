@@ -1,10 +1,10 @@
 .wrapper {
     display: inline-flex;
     justify-content: flex-end;
-    border: 10px solid lighten(#ef6c00, 15%);
+    border: 10px solid lighten(#1abc9c, 15%);
     transition: border-color .2s ease-in;
     &:hover {
-        border: 10px solid #ef6c00;
+        border: 10px solid #1abc9c;
         transition: border-color .2s ease-in;
     }
 }
@@ -16,3 +16,37 @@ canvas {
 .row {
     margin: 10vh 5vw;
 }
+
+header {
+    padding: 10px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+    font-size: 30px;
+}
+
+main {
+    background: linear-gradient(to bottom, #ffffff 0%, #dddee1 100%);
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    padding: 10vh 0 20vh;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+  
+    &::after {
+      content: '';
+      position: absolute;
+      top: calc(1vh + 1.618em);
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      height: 100%;
+    }
+  }
+
+footer {
+    background: #dddee1;
+    padding: 5vh 0;
+    text-align: center;
+    position: relative;
+  }
